@@ -1,5 +1,6 @@
 ﻿<Window x:Class="UITestApp.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:easy="clr-namespace:EasyCaptcha.Wpf;assembly=EasyCaptcha.Wpf"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -37,7 +38,7 @@
                                           Width="25"
                                           Height="25"
                                           Foreground="White"></materialIDesign:PackIcon>
-                        <TextBox materialIDesign:HintAssist.Hint="Ваш логин" x:Name="txbLogin" Margin="10 0" Foreground="White" BorderBrush="White"
+                        <TextBox  materialIDesign:HintAssist.Hint="Ваш логин" x:Name="txbLogin" Margin="10 0" Foreground="White" BorderBrush="White"
                          Width="250" GotFocus="TextBox_GotFocus" >
                             
                         </TextBox>
@@ -49,12 +50,31 @@
                         Height="25"
                         Foreground="White"></materialIDesign:PackIcon>
                         <PasswordBox Foreground="White" 
-                                     
+                                     x:Name="txbPass"
                                      Margin="10 0" 
                                      BorderBrush="White" 
                                      materialIDesign:HintAssist.Hint="Ваш пароль"
        Width="250"></PasswordBox>
+                        
                     </StackPanel>
+                    <easy:Captcha x:Name="MyCaptcha" Width="200" Height="50" Visibility="Collapsed" />
+                    <StackPanel Visibility="Collapsed" x:Name="stackCap" Orientation="Horizontal" Margin="10">
+                        <materialIDesign:PackIcon Kind="CapsLock" 
+                      Width="25"
+                      Height="25"
+                      Foreground="White"></materialIDesign:PackIcon>
+                        <TextBox   materialIDesign:HintAssist.Hint="Введите капчу" x:Name="txbCap" Margin="10 0" Foreground="White" BorderBrush="White"
+     Width="250" GotFocus="TextBox_GotFocus" >
+
+                        </TextBox>
+                    </StackPanel>
+                    <Button Background="#2d6e6a" Width="200" Margin="0 20" BorderThickness="0" Content="Войти" Click="Button_Click">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="15"> </Setter>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
                 </StackPanel>
             </Grid>
         </Border>
